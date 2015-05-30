@@ -74,7 +74,7 @@ endfunction
 
 " Returns the root directory for the current file based on the list of
 " known SCM directory names.
-function! s:FindRootDirectory()
+function! FindRootDirectory()
   for pattern in g:rooter_patterns
     let result = s:FindInCurrentPath(pattern)
     if !empty(result)
@@ -91,7 +91,7 @@ function! s:ChangeToRootDirectory()
     return
   endif
 
-  let root_dir = s:FindRootDirectory()
+  let root_dir = FindRootDirectory()
   if empty(root_dir)
     if g:rooter_change_directory_for_non_project_files
       call s:ChangeDirectory(expand('%:p:h'))
